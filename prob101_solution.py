@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def polynomial(seq):
     def poly(n):
         total = 0
@@ -28,3 +30,5 @@ def sum_first_incorrect_terms(polynomial,degree):
         if approx_term != next_term:
             fit_sum += approx_term
     return fit_sum
+
+print sum_first_incorrect_terms(polynomial((1,-1,1,-1,1,-1,1,-1,1,-1,1)),10)
