@@ -1,3 +1,7 @@
+#!/usr/bin/env python
+# 376
+# 9.133 s
+
 class Card(str):
     def translate(self, rank):
         if rank.isdigit():
@@ -89,3 +93,15 @@ class Hand(tuple):
                 return True
             if score < alt_value[index]:
                 return False
+
+def num_winning_hands():
+    total = 0
+    poker_file = open('poker.txt','r')
+    for row in poker_file:
+        cards = map(Card,row.split())
+        hand1, hand2 = Hand(cards[:5]),Hand(cards[5:])
+        if hand1.beats(hand2):
+            total += 1
+    return total
+
+print num_winning_hands()
