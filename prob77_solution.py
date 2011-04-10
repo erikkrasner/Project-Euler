@@ -6,12 +6,6 @@ from itertools import takewhile
 from prime_gen import *
 from itertools import count
 
-#prime_file = open('primes1.txt','r')
-#prime_list = []
-#for line in prime_file:
-#    prime_list += map(int, line.split())
-#prime_set = set(prime_list)
-
 def first_prime_sum_exceeding(prime_sum_count):
 	prime_sums = {}
 	def num_prime_sums(n):
