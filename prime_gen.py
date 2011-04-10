@@ -14,11 +14,6 @@ def prime_file_iter():
 file_iter = prime_file_iter()
 next(file_iter) # skip 2
 
-def count(init,step):
-    while(True):
-        yield init
-        init += step
-
 def prime(n):
     if n <= prime_list[-1]:
         return n in prime_set
@@ -30,6 +25,10 @@ def prime(n):
     return True
 
 def primes():
+    def count(init,step):
+        while(True):
+            yield init
+            init += step
     for pr in prime_list:
         yield pr
     for pr in file_iter:

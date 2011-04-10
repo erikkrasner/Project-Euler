@@ -2,9 +2,8 @@
 # 71
 # 0.065s
 
-from itertools import takewhile
+from itertools import takewhile, count
 from prime_gen import *
-from itertools import count
 
 def first_prime_sum_exceeding(prime_sum_count):
 	prime_sums = {}
