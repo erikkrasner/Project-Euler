@@ -1,20 +1,16 @@
 #!/usr/bin/env python
-# 23786737
-# 4.3 s
-
-def modexp(a,b,m):
-	power = 1
-	while b:
-		power *= a
-		power %= m
-		b -= 1
-	return power
+# 95962097
+# 0.098s
 
 def modtetrate(a,b,m):
 	tetration = a
+	half = 1
+	while 2 * half < b:
+		tetration = pow(tetration,tetration,m)
+		half *= 2
 	b -= 1
-	while b:
-		tetration = modexp(tetration,a,m)
+	while b >= half:
+		tetration = pow(a,tetration,m)
 		b -= 1
 	return tetration
 
