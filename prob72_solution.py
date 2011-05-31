@@ -1,17 +1,18 @@
 #!/usr/bin/env python
 #303963552391
-#takes about two minutes
-from itertools import count
+#2m22.267s
+from itertools import count, takewhile
+from prime_gen import *
 import time
 
-factor_table = {}
-
+factor_table = [0 for _ in xrange(10000001)]
+                
 # factoring routine optimized for factoring a bunch
 #  of numbers
 def factor(n):
-    if n in factor_table:
+    if factor_table[n]:
         return factor_table[n]
-    for potential_factor in count(2):
+    for potential_factor in primes():
         # Since potential_factor is the smallest factor for n
         #  other than 1, it's guaranteed to be prime -- and
         #  since n / potential_factor is smaller than n, it's
@@ -26,17 +27,10 @@ def factor(n):
 def factor_numbers_up_to(n):
     print "factoring"
     old_time = time.time()
-    prime_file = open ('primes1.txt','r')
-    prime_list = []
-    for line in prime_file:
-        primes = map(int,line.split())
-        prime_list += primes
-        if primes[-1] > n:
-            prime_file.close()
-            break
+    #m = 10000
     factor_table[1] = set((1,))
-    for prime in prime_list:
-        factor_table[prime] = set((1,prime))
+    for pr in takewhile(lambda x: x <= n,primes()):
+        factor_table[pr] = set((1,pr))
     for number in xrange(1,n+1):
         if not number % 50000:
             print number,time.time()-old_time
@@ -44,7 +38,7 @@ def factor_numbers_up_to(n):
 
 import time
 def num_fractions_up_to(max_denominator):
-    print "finding fractions"
+    #print "finding fractions"
     old_time = time.time()
     fraction_counts = {}
     total = 0
