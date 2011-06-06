@@ -36,7 +36,6 @@ def factor_numbers_up_to(n):
             print number,time.time()-old_time
         factor(number)
 
-import time
 def num_fractions_up_to(max_denominator):
     #print "finding fractions"
     old_time = time.time()
